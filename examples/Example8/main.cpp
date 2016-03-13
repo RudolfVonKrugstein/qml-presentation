@@ -19,16 +19,10 @@ int main(int argc, char *argv[])
     // Global network manager
     QNetworkAccessManager manager;
 
+    QXkcdDownloader::manager = &manager;
+    QXkcdDownloader::imageProvider = xkcdImageProvider;
     // Register the downloader type
-    qmlRegisterType<QXkcdDownloader>("de.goodpoint_jd",1,0,"XkcdDownloader");
-
-    // Set a downloader
-    QXkcdDownloader downloader(xkcdImageProvider,&manager);
-    // Here we register variables to be used in qml
-    engine.rootContext()->setContextProperty("downloader",&downloader);
-
-    //Start the download
-    downloader.startDownload(681);
+    qmlRegisterType<QXkcdDownloader>("de.goodpoint_hd",1,0,"XkcdDownloader");
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
