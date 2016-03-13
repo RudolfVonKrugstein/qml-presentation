@@ -20,7 +20,7 @@ Window {
         }
 
         ProgressBar {
-            value: imageProgress
+            value: imageProgress/100.0
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
         }
