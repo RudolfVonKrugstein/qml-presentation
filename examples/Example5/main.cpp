@@ -25,13 +25,13 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("imageURL","");
     engine.rootContext()->setContextProperty("comicTitle","Loading...");
     // Connect to change qml variables
-    QObject::connect(&downloader,&QXkcdDownloader::onImageProgressChanged,[&engine,&downloader](int progress){
+    QObject::connect(&downloader,&QXkcdDownloader::imageProgressChanged,[&engine,&downloader](int progress){
         engine.rootContext()->setContextProperty("imageProgress",progress);
     });
-    downloader.connect(&downloader,&QXkcdDownloader::onTitleFinished,[&engine,&downloader](){
+    downloader.connect(&downloader,&QXkcdDownloader::titleFinished,[&engine,&downloader](){
        engine.rootContext()->setContextProperty("comicTitle",downloader.title);
     });
-    downloader.connect(&downloader,&QXkcdDownloader::onImageFinished,[&engine,&downloader](){
+    downloader.connect(&downloader,&QXkcdDownloader::imageFinished,[&engine,&downloader](){
        // The downloader adds the image to the ImageProvider, we have to set the correct URL
        engine.rootContext()->setContextProperty("imageURL","image://xkcd/"+QString::number(downloader.xkcdID));
     });
