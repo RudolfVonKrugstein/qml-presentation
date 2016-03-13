@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     QNetworkAccessManager manager;
 
     // Register the downloader type
-    qmlRegisterType<QXkcdDownloader>("de.goodpoint_jd",1,0,"XkcdDownloader");
+    qmlRegisterType<QXkcdDownloader>("de.goodpoint_hd",1,0,"XkcdDownloader");
 
     // Set a downloader
     QXkcdDownloader downloader(xkcdImageProvider,&manager);
