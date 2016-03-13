@@ -28,8 +28,8 @@ private:
 
 signals:
     void onImageProgressChanged(int progress);
-    void onImageFinished();
-    void onTitleFinished();
+    void onImageFinished(int xkcdID);
+    void onTitleFinished(QString title);
 };
 
 #endif // QDOWNLOADER_H

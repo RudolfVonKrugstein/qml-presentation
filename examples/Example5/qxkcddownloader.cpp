@@ -34,11 +34,11 @@ void QXkcdDownloader::startDownload(int id)
 
         if (reply->error() != QNetworkReply::NoError) {
             title = reply->errorString();
-            emit onTitleFinished();
+            emit onTitleFinished(title);
             return;
         }
         title = jsonData["title"].toString();
-        emit onTitleFinished();
+        emit onTitleFinished(title);
 
         // Download the image
         QNetworkRequest request;
@@ -50,7 +50,7 @@ void QXkcdDownloader::startDownload(int id)
             imageData.loadFromData(imgReply->readAll(),"PNG");
             imageProvider->addPixmap(QString::number(xkcdID),imageData);
 
-            emit onImageFinished();
+            emit onImageFinished(xkcdID);
             imgReply->deleteLater();
         });
 
